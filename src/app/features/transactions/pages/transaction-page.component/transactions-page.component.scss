@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+
+  > h1 {
+    font-size: 1.6rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 1.5rem;
+  }
+}

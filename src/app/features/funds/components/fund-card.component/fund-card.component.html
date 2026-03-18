@@ -1,0 +1,36 @@
+<article>
+    <h3>{{ fund.name }}</h3>
+
+    <p><strong>Categoría:</strong> {{ fund.category }}</p>
+    <p>
+      <strong>Monto mínimo:</strong>
+      {{ fund.minimumAmount | currency:'COP':'symbol':'1.0-0' }}
+    </p>
+
+    @if (fund.isSubscribed) {
+      <p><strong>Estado:</strong> Suscrito</p>
+      <p>
+        <strong>Monto invertido:</strong>
+        {{ fund.investedAmount | currency:'COP':'symbol':'1.0-0' }}
+      </p>
+      <p><strong>Método de notificación:</strong> {{ fund.notificationMethod }}</p>
+
+      <button
+        type="button"
+        [disabled]="busy"
+        (click)="cancelRequested.emit(fund)"
+      >
+        Cancelar participación
+      </button>
+    } @else {
+      <p><strong>Estado:</strong> No suscrito</p>
+
+      <button
+        type="button"
+        [disabled]="busy"
+        (click)="subscribeRequested.emit(fund)"
+      >
+        Suscribirse
+      </button>
+    }
+</article>

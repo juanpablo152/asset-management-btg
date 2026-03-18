@@ -1,0 +1,17 @@
+<section>
+  <h2>Fondos disponibles</h2>
+
+  @for (fund of funds; track fund.id) {
+    <app-fund-card
+      [fund]="fund"
+      [busy]="busy"
+      (subscribeRequested)="subscribeRequested.emit(fund)"
+      (cancelRequested)="cancelRequested.emit(fund)"
+    />
+  } @empty {
+    <app-empty-state
+      title="No hay fondos disponibles"
+      description="La lista de fondos está vacía."
+    />
+  }
+</section>

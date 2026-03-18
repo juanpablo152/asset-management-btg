@@ -1,0 +1,19 @@
+@if (fund) {
+<section>
+    <h3>Cancelar participación</h3>
+
+    <p><strong>Fondo:</strong> {{ fund.name }}</p>
+    <p>
+      <strong>Monto a devolver:</strong>
+      {{ fund.investedAmount | currency:'COP':'symbol':'1.0-0' }}
+    </p>
+
+    <button type="button" [disabled]="busy" (click)="confirmed.emit()">
+      Confirmar cancelación
+    </button>
+
+    <button type="button" [disabled]="busy" (click)="closed.emit()">
+      Volver
+    </button>
+  </section>
+}

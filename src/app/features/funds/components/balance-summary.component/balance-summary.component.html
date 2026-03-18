@@ -1,0 +1,18 @@
+<section>
+    <h2>Resumen de cartera</h2>
+
+    <p>
+      <strong>Saldo disponible:</strong>
+      {{ balance | currency:'COP':'symbol':'1.0-0' }}
+    </p>
+
+    <p>
+      <strong>Total invertido:</strong>
+      {{ investedTotal | currency:'COP':'symbol':'1.0-0' }}
+    </p>
+
+    <p>
+      <strong>Fondos activos:</strong>
+      {{ activeCount }}
+    </p>
+  </section>

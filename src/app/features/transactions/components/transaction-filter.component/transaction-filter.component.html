@@ -1,0 +1,23 @@
+<section>
+    <h2>Filtros</h2>
+
+    <form [formGroup]="form">
+      <label>
+        Tipo
+        <select formControlName="type">
+          <option value="ALL">Todos</option>
+          <option value="SUBSCRIPTION">Suscripciones</option>
+          <option value="CANCELLATION">Cancelaciones</option>
+        </select>
+      </label>
+
+      <label>
+        Buscar
+        <input
+          type="text"
+          formControlName="search"
+          placeholder="Nombre del fondo o método ede notificación"
+        />
+      </label>
+    </form>
+  </section>

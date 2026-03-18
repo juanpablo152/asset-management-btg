@@ -1,0 +1,34 @@
+<section>
+  <h2>Historial</h2>
+
+  @if (transactions.length) {
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Fondo</th>
+        <th>Tipo</th>
+        <th>Monto</th>
+        <th>Notificación</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (transaction of transactions; track transaction.id) {
+        <tr>
+          <td>{{ transaction.createdAt | date: 'medium' }}</td>
+          <td>{{ transaction.fundName }}</td>
+          <td>{{ transaction.type }}</td>
+          <td>{{ transaction.amount | currency: 'COP' : 'symbol' : '1.0-0' }}</td>
+          <td>{{ transaction.notificationMethod || '-' }}</td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  } @else {
+    <app-empty-state
+      title="Sin transacciones"
+      description="Todavía no se ha registrado ninguna operación."
+    />
+  }
+</section>

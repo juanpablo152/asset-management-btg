@@ -1,0 +1,36 @@
+@if (fund) {
+<section>
+    <h3>Suscribirse al fondo</h3>
+
+    <p><strong>Fondo:</strong> {{ fund.name }}</p>
+    <p>
+      <strong>Monto a invertir:</strong>
+      {{ fund.minimumAmount | currency:'COP':'symbol':'1.0-0' }}
+    </p>
+
+    <form [formGroup]="form" (submit)="submit()">
+      <fieldset>
+        <legend>Método de notificación</legend>
+
+        <label>
+          <input type="radio" formControlName="notificationMethod" value="email" />
+          Email
+        </label>
+
+        <label>
+          <input type="radio" formControlName="notificationMethod" value="sms" />
+          SMS
+        </label>
+      </fieldset>
+
+      @if (form.controls.notificationMethod.invalid && form.controls.notificationMethod.touched) {
+        <p>
+          Debes seleccionar un método de notificación.
+        </p>
+      }
+
+      <button type="submit" [disabled]="busy">Confirmar suscripción</button>
+      <button type="button" [disabled]="busy" (click)="closed.emit()">Cancelar</button>
+    </form>
+  </section>
+}

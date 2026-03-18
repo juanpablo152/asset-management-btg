@@ -1,0 +1,80 @@
+:host {
+  display: block;
+}
+
+article {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    word-break: break-word;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: var(--color-text);
+
+    strong {
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+  }
+
+  .badge-subscribed {
+    display: inline-block;
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    margin-bottom: 0.25rem;
+  }
+
+  .badge-not-subscribed {
+    display: inline-block;
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    margin-bottom: 0.25rem;
+  }
+
+  .actions {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  button {
+    margin-top: 0.75rem;
+    width: 100%;
+    padding: 0.55rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+
+    &:first-of-type:not(:last-of-type) {
+      background: var(--color-danger);
+      color: #fff;
+      &:hover:not(:disabled) { background: #a93226; }
+    }
+
+    &:only-of-type {
+      background: var(--color-primary);
+      color: #fff;
+      &:hover:not(:disabled) { background: var(--color-primary-dark); }
+    }
+  }
+}

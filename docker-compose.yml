@@ -1,0 +1,15 @@
+services:
+  frontend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NG_CLI_ANALYTICS=false
+    command: npm start -- --host 0.0.0.0 --poll 2000
+    stdin_open: true
+    tty: true

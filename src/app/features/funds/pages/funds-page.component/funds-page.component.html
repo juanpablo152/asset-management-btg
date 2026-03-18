@@ -1,0 +1,45 @@
+<section>
+    <app-error-banner
+      [message]="error$ | async"
+      (closed)="clearError()"
+    />
+
+    @if (loading$ | async) {
+    <app-loading-spinner />
+    }
+
+    @if (!(loading$ | async)) {
+      @if (summary$ | async) {
+      <app-balance-summary
+        [balance]="(summary$ | async)?.balance"
+        [investedTotal]="(summary$ | async)?.investedTotal"
+        [activeCount]="(summary$ | async)?.activeCount"
+      />
+      }
+
+      <app-fund-list
+        [funds]="(funds$ | async) ?? []"
+        [busy]="(actionLoading$ | async) ?? false"
+        (subscribeRequested)="openSubscribeDialog($event)"
+        (cancelRequested)="openCancelDialog($event)"
+      />
+    }
+
+    @if (selectedForSubscription) {
+    <app-subscribe-dialog
+      [fund]="selectedForSubscription"
+      [busy]="(actionLoading$ | async) ?? false"
+      (confirmed)="confirmSubscription($event)"
+      (closed)="selectedForSubscription = null"
+    />
+    }
+
+    @if (selectedForCancellation) {
+    <app-cancel-dialog
+      [fund]="selectedForCancellation"
+      [busy]="(actionLoading$ | async) ?? false"
+      (confirmed)="confirmCancellation()"
+      (closed)="selectedForCancellation = null"
+    />
+    }
+  </section>

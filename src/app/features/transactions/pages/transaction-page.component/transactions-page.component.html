@@ -1,0 +1,15 @@
+<section>
+  <h1>Historial de transacciones</h1>
+
+  <app-error-banner [message]="error$ | async" (closed)="clearError()" />
+
+  @if (loading$ | async) {
+    <app-loading-spinner />
+  }
+
+  @if (!(loading$ | async)) {
+    <app-transaction-filter (filterChange)="updateFilter($event)" />
+
+    <app-transaction-table [transactions]="(transactions$ | async) ?? []" />
+  }
+</section>
