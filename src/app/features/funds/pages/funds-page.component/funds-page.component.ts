@@ -52,6 +52,7 @@ export class FundsPageComponent {
   }
 
   confirmSubscription(notificationMethod: NotificationMethod): void {
+    console.log('confirmSubscription', notificationMethod);
     if (!this.selectedForSubscription) {
       return;
     }
@@ -59,10 +60,8 @@ export class FundsPageComponent {
     this.facade
       .subscribeToFund(this.selectedForSubscription.id, notificationMethod)
       .pipe(take(1))
-      .subscribe((success) => {
-        if (success) {
-          this.selectedForSubscription = null;
-        }
+      .subscribe(() => {
+        this.selectedForSubscription = null;
       });
   }
 
